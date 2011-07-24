@@ -3,12 +3,12 @@ Summary(pl.UTF-8):	Narzędzie do aktualizacji oprogramowania urzadzeń USB
 Name:		dfu-util
 Version:	0.4
 Release:	1
-License:	GPL v2
-Group:		Development/Tools
+License:	GPL v2+
+Group:		Applications/System
 Source0:	http://dfu-util.gnumonks.org/releases/%{name}-%{version}.tar.gz
 # Source0-md5:	2cf466fabb881e8598fa02f286d3242c
 URL:		http://wiki.openmoko.org/wiki/Dfu-util
-BuildRequires:	libusb-devel
+BuildRequires:	libusb-devel >= 1.0.0
 BuildRequires:	pkgconfig
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -24,7 +24,8 @@ Bus Device Firmware Upgrade) po stronie hosta (PC).
 %setup -q
 
 %build
-%configure
+%configure \
+	--disable-silent-rules
 %{__make}
 
 %install
@@ -37,6 +38,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc ChangeLog README TODO
+%doc ChangeLog DEVICES.txt README TODO
 %attr(755,root,root) %{_bindir}/dfu-util
-%{_mandir}/man?/*
+%{_mandir}/man1/dfu-util.1*
