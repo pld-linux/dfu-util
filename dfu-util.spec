@@ -1,12 +1,12 @@
 Summary:	Dfu-util device firmware upgrade utility
 Summary(pl.UTF-8):	Narzędzie do aktualizacji oprogramowania urzadzeń USB
 Name:		dfu-util
-Version:	0.7
+Version:	0.8
 Release:	1
 License:	GPL v2+
 Group:		Applications/System
 Source0:	http://dfu-util.gnumonks.org/releases/%{name}-%{version}.tar.gz
-# Source0-md5:	56844020177d4db4c1ea2e926fe9d588
+# Source0-md5:	fc6daf6b0ee57d7e40ffa3e8111023d1
 URL:		http://wiki.openmoko.org/wiki/Dfu-util
 BuildRequires:	libusb-devel >= 1.0.0
 BuildRequires:	pkgconfig
@@ -40,6 +40,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc ChangeLog DEVICES.txt README TODO
+%attr(755,root,root) %{_bindir}/dfu-prefix
 %attr(755,root,root) %{_bindir}/dfu-suffix
 %attr(755,root,root) %{_bindir}/dfu-util
 %{_mandir}/man1/dfu-util.1*
